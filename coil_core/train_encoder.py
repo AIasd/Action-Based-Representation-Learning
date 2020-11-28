@@ -96,13 +96,16 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
             json_file_name = str(g_conf.EXPERIENCE_FILE[0]).split('/')[-1].split('.')[-2]
         else:
             json_file_name = str(g_conf.EXPERIENCE_FILE[0]).split('/')[-1].split('.')[-2] + '_' + str(g_conf.EXPERIENCE_FILE[1]).split('/')[-1].split('.')[-2]
-
+        print(g_conf.EXPERIENCE_FILE)
         dataset = CoILDataset(transform=augmenter,
                               preload_name=g_conf.PROCESS_NAME + '_' + json_file_name + '_' + g_conf.DATA_USED)
 
         print ("Loaded dataset")
 
+
         data_loader = select_balancing_strategy(dataset, iteration, number_of_workers)
+        print('len(data_loader)', len(data_loader))
+        print('\n'*2, 'model and config:', g_conf.ENCODER_MODEL_TYPE, g_conf.ENCODER_MODEL_CONFIGURATION, '\n'*2)
 
         encoder_model = EncoderModel(g_conf.ENCODER_MODEL_TYPE, g_conf.ENCODER_MODEL_CONFIGURATION)
         encoder_model.cuda()
@@ -128,6 +131,7 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
 
         # Loss time series window
         for data in data_loader:
+            print('iteration :', iteration)
             if iteration % 1000 == 0:
                 adjust_learning_rate_auto(optimizer, loss_window)
 
@@ -290,10 +294,11 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
         coil_logger.add_message('Finished', {})
 
     except KeyboardInterrupt:
+        traceback.print_exc()
         coil_logger.add_message('Error', {'Message': 'Killed By User'})
 
     except RuntimeError as e:
-
+        traceback.print_exc()
         coil_logger.add_message('Error', {'Message': str(e)})
 
     except:

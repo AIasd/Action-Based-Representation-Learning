@@ -7,7 +7,7 @@ MAGICAL_SEED: 1314
 # A dictionary with all the sensors that are going to be used as input
 # this should match the train dataset
 SENSORS:
-  rgb_central: [3, 88, 200] # A RGB input sensor with three channels that is resized to 200x88
+  rgb_central: [3, 144, 256] # A RGB input sensor with three channels that is resized to 200x88
 MEASUREMENTS:
   float_data: [31]  # Number of float data that must be read from the dataset
 COMMANDS:
@@ -24,11 +24,11 @@ NUMBER_IMAGES_SEQUENCE: 1  # Number of frames sent in sequence
 SEQUENCE_STRIDE: 1  # Number of frames skipped when reading the data
 AUGMENT_LATERAL_STEERINGS: 6  # Depending on this value there is a constant multiplying lateral steers
 SPEED_FACTOR: 12.0  # The constant that is divides the speed_module in order to make it from 0-1
-TRAIN_DATASET_NAME: 'small_dataset'  # The name of the training dataset used. Must be inside SRL_DATASET_PATH folder
+TRAIN_DATASET_NAME: 'customized'  # The name of the training dataset used. Must be inside SRL_DATASET_PATH folder
 AUGMENTATION: None  # The image augmentation applied on every input image
 DATA_USED: 'central'  # The part of the data to be used
 USE_NOISE_DATA: True  # If we use the noise data.
-EXPERIENCE_FILE: ['/home/zhongzzy9/Documents/self-driving-car/Action-Based-Representation-Learning/carl/database/CoRL2020/small_dataset.json']
+EXPERIENCE_FILE: ['/home/zhongzzy9/Documents/self-driving-car/Action-Based-Representation-Learning/carl/database/CoRL2020/customized.json']
 #### Testing Related Parameters ####
 TEST_SCHEDULE: [1000] # The iterations where training checkpoints are going to be saved
   # The frequency the model is actually tested.

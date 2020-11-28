@@ -283,7 +283,7 @@ class CoILDataset(Dataset):
                         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # cv2.imread changes the RGB channel to BGR, we need to convert them back to RGB
 
                         # Apply the image transformation
-
+                        img = cv2.resize(img, (200, 88), interpolation = cv2.INTER_AREA)
                         if self.transform is not None:
                             boost = 1
                             img = self.transform(self.batch_read_number * boost, img)
@@ -326,6 +326,8 @@ class CoILDataset(Dataset):
             measurements['steer'] = 0.0
             measurements['throttle'] = 0.0
             measurements['brake'] = 0.0
+            # TBD: may want to modify the following hardcoded dimensions
+            # 88, 200 -> 144, 256
             measurements['rgb_central'] = np.zeros(3, 88, 200)
         except IndexError:
             traceback.print_exc()

@@ -127,3 +127,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+Carla96ped4/*
+small_dataset/*
+_preloads/*
+_logs/*
+_logs_pretrained/*
+
+carl/database/CoRL2020/new_routes/*
+customized/*
+nocrash_training_regular_Town01/*
+
+run_output.txt
+run_customized_output.txt

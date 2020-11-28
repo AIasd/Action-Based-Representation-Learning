@@ -11,8 +11,10 @@ from torchvision.utils import save_image
 import matplotlib.pyplot as plt
 
 from scipy.misc import imresize
-from drive.affordances import  get_driving_affordances
-from drive.local_planner import LocalPlanner
+
+from affordances import  get_driving_affordances
+from local_planner import LocalPlanner
+
 from network import CoILModel, EncoderModel
 from coilutils.drive_utils import checkpoint_parse_configuration_file
 

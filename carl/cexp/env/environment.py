@@ -3,6 +3,10 @@ import logging
 import os
 import shutil
 
+import sys
+
+file_dir = os.path.dirname('/home/zhongzzy9/Documents/self-driving-car/Action-Based-Representation-Learning/carl')
+sys.path.append(file_dir)
 from carl.cexp.env.experience import Experience
 from carl.cexp.env.datatools.map_drawer import draw_pedestrians, draw_opp_trajectories, \
                                           draw_trajectories

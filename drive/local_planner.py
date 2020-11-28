@@ -13,9 +13,9 @@ from collections import deque
 import random
 
 import carla
-from drive.controller import VehiclePIDController
-from drive.misc import distance_vehicle, draw_waypoints
-from drive.affordances import compute_relative_angle
+from controller import VehiclePIDController
+from misc import distance_vehicle, draw_waypoints
+from affordances import compute_relative_angle
 
 class RoadOption(Enum):
     """

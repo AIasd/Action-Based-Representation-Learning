@@ -14,7 +14,7 @@ import math
 import numpy as np
 
 import carla
-from drive.misc import get_speed
+from misc import get_speed
 
 
 class VehiclePIDController():
